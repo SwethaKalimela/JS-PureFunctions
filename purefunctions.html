@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pure Functions</title>
+    <script>
+        var type = {a: "INC", b: "DEC"}; //defining array to determine actionType
+        function counterReducer(actionType, counter) {
+            console.log("Initial Counter Value",counter);
+            if(actionType == "INC") {
+                counter+=1;
+                actionType= "Increment"; //changing actionType does not change the type.a(which is outside the scope of this function), hence this is pure function
+            }
+            else {
+                counter-=1;
+                actionType= "Decrement"
+            }
+            console.log(actionType,counter);
+        }
+        var c = new counterReducer(type.a,5);
+        var e = new counterReducer(type.b,5);
+        console.log(type.a,type.b); //printing the type key values to ensure they has not changed after the function execution twice, hence this is pure function
+    </script>
+</head>
+</html>
